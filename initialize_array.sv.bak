@@ -1,0 +1,8 @@
+module Initialize_Array(
+	input logic clk,
+	input logic reset,
+	output logic [7:0] address,
+	output logic [7:0] data,
+	
+);
+endmodule
