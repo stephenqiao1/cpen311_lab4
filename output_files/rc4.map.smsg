@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at ksa.sv(69): always construct contains both blocking and non-blocking assignments File: C:/Users/leest/Downloads/Lab4_template_de1soc/template_de1soc/ksa.sv Line: 69
+Info (10281): Verilog HDL Declaration information at ksa.sv(4): object "KEY" differs only in case from object "key" in the same scope File: C:/Users/leest/Downloads/Lab4_template_de1soc/template_de1soc/ksa.sv Line: 4
