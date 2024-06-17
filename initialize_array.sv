@@ -23,7 +23,7 @@ module Initialize_Array(
     if (reset) begin
       state <= S_INIT_TASK1;
       i <= 8'b0;
-		finish <= 8'b0;
+		finish <= 1'b0;
     end else begin
       case (state)
         S_INIT_TASK1: begin
@@ -35,11 +35,12 @@ module Initialize_Array(
         S_INCREMENT: begin
           address <= i;
           data <= i;
-          wren <= 1'b1;
-          i <= i + 1;
+          i <= i + 8'd1;
           if (i == 8'd255) begin
             state <= S_DONE;
-          end
+          end else begin
+				state <= S_INCREMENT;
+			end
         end
 
         S_DONE: begin
