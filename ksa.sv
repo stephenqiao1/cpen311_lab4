@@ -7,7 +7,7 @@ module ksa (
 );
 
   // Internal signals
-  wire [7:0] address_init, address_shuffle, data_init, data_shuffle, q;
+  wire [7:0] address_init, address_shuffle, data_init, data_shuffle, q, q_rom;
   wire wren_init, wren_shuffle, reset, finish_init, finish_shuffle;
   wire [7:0] address, data;
   wire wren;
@@ -20,6 +20,13 @@ module ksa (
     .wren(wren),
     .q(q)
   );
+  
+  // Instantiate the ROM
+   message u_message (
+      .address(address),
+      .clock(clock),
+      .q(q_rom)
+   );
 
   // Reset signal
   assign reset = ~KEY[3];
