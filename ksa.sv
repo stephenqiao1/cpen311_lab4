@@ -7,9 +7,10 @@ module ksa (
 );
 
   // Internal signals
+  wire [7:0] address_init, address_shuffle, data_init, data_shuffle, q;
+  wire wren_init, wren_shuffle, reset, finish_init, finish_shuffle;
   wire [7:0] address, data;
   wire wren;
-  wire reset;
 
   // Memory instance
   s_memory s_mem_inst (
@@ -17,7 +18,7 @@ module ksa (
     .clock(CLOCK_50),
     .data(data),
     .wren(wren),
-    .q()
+    .q(q)
   );
 
   // Reset signal
@@ -35,9 +36,28 @@ module ksa (
   Initialize_Array initialize_s_array(
 	.clk(CLOCK_50),
 	.reset(reset),
-	.address(address),
-	.data(data),
-	.wren(wren)
+	.finish(finish_init),
+	.address(address_init),
+	.data(data_init),
+	.wren(wren_init)
   );
+  
+  // Shuffle Array FSM
+  Shuffle_Array shuffle_array(
+	.clk(CLOCK_50),
+	.start(finish_init),
+	.SW(SW),
+	.q(q),
+	.address(address_shuffle),
+	.data(data_shuffle),
+	.wren(wren_shuffle),
+	.finish(finish_shuffle),
+	.LED(LEDR)
+  );
+  
+  // Control logic for address, data, and wren signals
+  assign address = finish_init ? address_shuffle : address_init;
+  assign data = finish_init ? data_shuffle : data_init;
+  assign wren = finish_init ? wren_shuffle : wren_init;
 
 endmodule
