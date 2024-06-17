@@ -7,9 +7,9 @@ module ksa (
 );
 
   // Internal signals
-  wire [7:0] address_init, address_shuffle, data_init, data_shuffle, q, q_rom;
-  wire wren_init, wren_shuffle, reset, finish_init, finish_shuffle;
+  wire [7:0] address_init, address_shuffle, address_decrypt, data_init, data_shuffle, data_decrypt, q, q_rom, q_ram;
   wire [7:0] address, data;
+  wire wren_init, wren_shuffle, wren_decrypt, reset, finish_init, finish_shuffle, finish_decrypt;
   wire wren;
 
   // Memory instance
@@ -23,10 +23,19 @@ module ksa (
   
   // Instantiate the ROM
    message u_message (
-      .address(address),
-      .clock(clock),
+      .address(address_rom),
+      .clock(CLOCK_50),
       .q(q_rom)
    );
+	
+	// RAM memory
+	decrypted_memory u_decrypted_memory (
+        .address(address_ram),
+        .clock(CLOCK_50),
+        .data(data_ram),
+        .wren(wren_ram),
+        .q(q_ram)
+    );
 
   // Reset signal
   assign reset = ~KEY[3];
@@ -62,9 +71,25 @@ module ksa (
 	.LED(LEDR)
   );
   
+  // Decrypt Message FSM
+  Decrypt_Message decrypt(
+	.clk(CLOCK_50),
+	.start(finish_shuffle),
+	.q(q),
+	.q_rom(q_rom),
+	.address(address_decrypt),
+	.address_rom(address_rom),
+	.address_ram(address_ram),
+	.data(data_decrypt),
+	.data_ram(data_ram),
+	.wren(wren_decrypt),
+	.wren_ram(wren_ram),
+	.finish(finish_decrypt)
+  );
+  
   // Control logic for address, data, and wren signals
-  assign address = finish_init ? address_shuffle : address_init;
-  assign data = finish_init ? data_shuffle : data_init;
-  assign wren = finish_init ? wren_shuffle : wren_init;
+  assign address = finish_init ? (finish_shuffle ? address_decrypt : address_shuffle) : address_init;
+  assign data = finish_init ? (finish_shuffle ? data_decrypt : data_shuffle) : data_init;
+  assign wren = finish_init ? (finish_shuffle ? wren_decrypt : wren_shuffle) : wren_init;
 
 endmodule
