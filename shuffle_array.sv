@@ -36,7 +36,7 @@ module Shuffle_Array(
     reg [7:0] adjusted_key, i, j, i_element, j_element;
     reg [23:0] secret_key;
 
-    always_ff @(posedge clk or negedge start) begin
+    always_ff @(posedge clk) begin
         if (!start) begin
             state <= S_INIT_TASK2A;
             finish <= 1'b0;
@@ -94,7 +94,6 @@ module Shuffle_Array(
                 end
 
                 S_READ_ARRAY_J_WAIT: begin
-                    j_element <= q; // Save j value in j_element
                     state <= S_READ_ARRAY_J_FINISH;
                 end
 					 

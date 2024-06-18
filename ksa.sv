@@ -67,8 +67,7 @@ module ksa (
 	.address(address_shuffle),
 	.data(data_shuffle),
 	.wren(wren_shuffle),
-	.finish(finish_shuffle),
-	.LED(LEDR)
+	.finish(finish_shuffle)
   );
   
   // Decrypt Message FSM
@@ -77,6 +76,7 @@ module ksa (
 	.start(finish_shuffle),
 	.q(q),
 	.q_rom(q_rom),
+	.q_ram(q_ram),
 	.address(address_decrypt),
 	.address_rom(address_rom),
 	.address_ram(address_ram),
@@ -84,7 +84,8 @@ module ksa (
 	.data_ram(data_ram),
 	.wren(wren_decrypt),
 	.wren_ram(wren_ram),
-	.finish(finish_decrypt)
+	.finish(finish_decrypt),
+	.LED(LEDR)
   );
   
   // Control logic for address, data, and wren signals
