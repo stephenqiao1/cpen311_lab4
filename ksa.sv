@@ -8,9 +8,10 @@ module ksa (
 
   // Internal signals
   wire [7:0] address_init, address_shuffle, address_decrypt, data_init, data_shuffle, data_decrypt, q, q_rom;
-  wire [7:0] address, data, data_ram, address_rom, address_ram;
+  wire [7:0] address, data, data_ram, address_rom, address_ram, search_address;
   wire wren_init, wren_shuffle, wren_decrypt, reset, finish_init, finish_shuffle, finish_decrypt;
   wire wren, wren_ram;
+  wire [23:0] brute_force_key;
 
   // Memory instance
   s_memory s_mem_inst (
@@ -41,12 +42,12 @@ module ksa (
   assign reset = ~KEY[3];
 
   // Seven Segment Display (SSD) decoder instances (currently not used, placeholder)
-  SevenSegmentDisplayDecoder h0(HEX0, 4'b0);
-  SevenSegmentDisplayDecoder h1(HEX1, 4'b0);
-  SevenSegmentDisplayDecoder h2(HEX2, 4'b0);
-  SevenSegmentDisplayDecoder h3(HEX3, 4'b0);
-  SevenSegmentDisplayDecoder h4(HEX4, 4'b0);
-  SevenSegmentDisplayDecoder h5(HEX5, 4'b0);
+//  SevenSegmentDisplayDecoder h0(HEX0, 4'b0);
+//  SevenSegmentDisplayDecoder h1(HEX1, 4'b0);
+//  SevenSegmentDisplayDecoder h2(HEX2, 4'b0);
+//  SevenSegmentDisplayDecoder h3(HEX3, 4'b0);
+//  SevenSegmentDisplayDecoder h4(HEX4, 4'b0);
+//  SevenSegmentDisplayDecoder h5(HEX5, 4'b0);
   
   // Initialize s Array FSM
   Initialize_Array initialize_s_array(
@@ -83,8 +84,23 @@ module ksa (
 	.data_ram(data_ram),
 	.wren(wren_decrypt),
 	.wren_ram(wren_ram),
-	.finish(finish_decrypt),
-	.LED(LEDR)
+	.finish(finish_decrypt)
+  );
+  
+  //task3
+  search_message SrchMsg(
+    .clk(CLOCK_50),
+    .start(finish_decrypt),
+    .read_byte(q_ram),
+    .address(search_address),
+    .key(brute_force_key),
+    .HEX5(HEX5),
+    .HEX4(HEX4),
+    .HEX3(HEX3),
+    .HEX2(HEX2),
+    .HEX1(HEX1),
+    .HEX0(HEX0),
+    .LEDR(LEDR)
   );
   
   // Control logic for address, data, and wren signals

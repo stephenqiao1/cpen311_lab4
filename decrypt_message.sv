@@ -10,8 +10,7 @@ module Decrypt_Message(
     output logic [7:0] data_ram,
     output logic wren,
 	 output logic wren_ram,
-    output logic finish,
-	 output logic [7:0] LED
+    output logic finish
 );
 
     // State machine states for Task 2
@@ -42,7 +41,8 @@ module Decrypt_Message(
 		  DISABLE_RAM_WRITE,
 		  DECRYPT_PRE_WAIT,
 		  DECRYPT_WAIT,
-		  DECRYPT_DONE
+		  DECRYPT_DONE,
+		  ADD_I_WAIT
     } state_type;
 
     state_type state;
@@ -59,18 +59,22 @@ module Decrypt_Message(
 				address <= 8'b0;
 				address_rom <= 8'b0;
 				address_ram <= 8'b0;
+				wren <= 1'b0;
+            wren_ram <= 1'b0;
+				finish <= 8'b0;
         end else begin
             case (state)
 					INIT: begin
 						i <= 8'b0;
 						j <= 8'b0;
 						k <= 8'b0;
-						wren <= 8'b0;
-						wren_ram <= 8'b0;
 						state <= ADD_I;
 					end
 					ADD_I: begin
 						i <= i + 8'd1;
+						state <= ADD_I_WAIT;
+					end
+					ADD_I_WAIT: begin
 						state <= GET_ADDRESS_I;
 					end
 					GET_ADDRESS_I: begin
@@ -82,7 +86,7 @@ module Decrypt_Message(
 					end
 					ADD_J: begin
 						
-						j <= j + q;
+						j <= (j + q) % 8'd256;
 						state <= GET_I_ELEMENT;
 					end
 					GET_I_ELEMENT: begin
@@ -153,22 +157,15 @@ module Decrypt_Message(
 					DECRYPT: begin
 						address_ram <= k;
 						data_ram <= (f ^ q_rom);
-						wren_ram <= 1'b1;
 						state <= DECRYPT_PRE_WAIT;
 					end
 		
 					DECRYPT_PRE_WAIT: begin
+						wren_ram <= 1'b1;
 						state <= DECRYPT_WAIT;
 					end
 					DECRYPT_WAIT: begin
-//						LED[0] <= address_ram[0];
-//						LED[1] <= address_ram[1];
-//						LED[2] <= address_ram[2];
-//						LED[3] <= address_ram[3];
-//						LED[4] <= address_ram[4];
-//						LED[5] <= address_ram[5];
-//						LED[6] <= address_ram[6];
-//						LED[7] <= address_ram[7];
+						wren_ram <= 1'b0;
 						k <= k + 8'd1;
 						if (k == 8'd31) begin
                         state <= DECRYPT_DONE;
