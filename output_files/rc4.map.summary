@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Mon Jun 17 20:16:45 2024
+Analysis & Synthesis Status : Successful - Mon Jun 17 21:02:33 2024
 Quartus Prime Version : 16.1.2 Build 203 01/18/2017 SJ Lite Edition
 Revision Name : rc4
 Top-level Entity Name : ksa
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 401
+Total registers : 415
 Total pins : 67
 Total virtual pins : 0
 Total block memory bits : 2,560

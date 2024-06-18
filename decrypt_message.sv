@@ -66,6 +66,7 @@ module Decrypt_Message(
 						j <= 8'b0;
 						k <= 8'b0;
 						wren <= 8'b0;
+						wren_ram <= 8'b0;
 						state <= ADD_I;
 					end
 					ADD_I: begin
