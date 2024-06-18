@@ -3,7 +3,6 @@ module Decrypt_Message(
     input logic start,
     input wire [7:0] q,
 	 input wire [7:0] q_rom,
-	 input wire [7:0] q_ram,
     output logic [7:0] address,
 	 output logic [7:0] address_rom,
 	 output logic [7:0] address_ram,
@@ -70,7 +69,7 @@ module Decrypt_Message(
 						state <= ADD_I;
 					end
 					ADD_I: begin
-						i <= (i + 8'd1) % 8'd256;
+						i <= i + 8'd1;
 						state <= GET_ADDRESS_I;
 					end
 					GET_ADDRESS_I: begin
@@ -82,7 +81,7 @@ module Decrypt_Message(
 					end
 					ADD_J: begin
 						
-						j <= (j + q) % 8'd256;
+						j <= j + q;
 						state <= GET_I_ELEMENT;
 					end
 					GET_I_ELEMENT: begin
@@ -161,14 +160,14 @@ module Decrypt_Message(
 						state <= DECRYPT_WAIT;
 					end
 					DECRYPT_WAIT: begin
-						LED[0] <= data_ram[0]; // address is equal to 309
-						LED[1] <= data_ram[1];
-						LED[2] <= data_ram[2];
-						LED[3] <= data_ram[3];
-						LED[4] <= data_ram[4];
-						LED[5] <= data_ram[5];
-						LED[6] <= data_ram[6];
-						LED[7] <= data_ram[7];
+//						LED[0] <= address_ram[0];
+//						LED[1] <= address_ram[1];
+//						LED[2] <= address_ram[2];
+//						LED[3] <= address_ram[3];
+//						LED[4] <= address_ram[4];
+//						LED[5] <= address_ram[5];
+//						LED[6] <= address_ram[6];
+//						LED[7] <= address_ram[7];
 						k <= k + 8'd1;
 						if (k == 8'd31) begin
                         state <= DECRYPT_DONE;
