@@ -84,24 +84,25 @@ module ksa (
 	.data_ram(data_ram),
 	.wren(wren_decrypt),
 	.wren_ram(wren_ram),
-	.finish(finish_decrypt)
+	.finish(finish_decrypt),
+	.LED(LEDR)
   );
   
   //task3
-  search_message SrchMsg(
-    .clk(CLOCK_50),
-    .start(finish_decrypt),
-    .read_byte(q_ram),
-    .address(search_address),
-    .key(brute_force_key),
-    .HEX5(HEX5),
-    .HEX4(HEX4),
-    .HEX3(HEX3),
-    .HEX2(HEX2),
-    .HEX1(HEX1),
-    .HEX0(HEX0),
-    .LEDR(LEDR)
-  );
+//  search_message SrchMsg(
+//    .clk(CLOCK_50),
+//    .start(finish_decrypt),
+//    .read_byte(q_ram),
+//    .address(search_address),
+//    .key(brute_force_key),
+//    .HEX5(HEX5),
+//    .HEX4(HEX4),
+//    .HEX3(HEX3),
+//    .HEX2(HEX2),
+//    .HEX1(HEX1),
+//    .HEX0(HEX0),
+//    .LEDR(LEDR)
+//  );
   
   // Control logic for address, data, and wren signals
   assign address = finish_init ? (finish_shuffle ? address_decrypt : address_shuffle) : address_init;
