@@ -7,8 +7,9 @@ module ksa (
 );
 
   // Internal signals
-  wire [7:0] address_init, address_shuffle, address_decrypt, data_init, data_shuffle, data_decrypt, q, q_rom;
-  wire [7:0] address, data, data_ram, address_rom, address_ram, search_address;
+  wire [7:0] address_init, address_shuffle, address_decrypt, data_init, data_shuffle, data_decrypt, q, q_rom, q_ram;
+  wire [7:0] address, data, data_ram, search_address;
+  wire [4:0] address_rom, address_ram;
   wire wren_init, wren_shuffle, wren_decrypt, reset, finish_init, finish_shuffle, finish_decrypt;
   wire wren, wren_ram;
   wire [23:0] brute_force_key;
@@ -35,7 +36,7 @@ module ksa (
         .clock(CLOCK_50),
         .data(data_ram),
         .wren(wren_ram),
-        .q()
+        .q(q_ram)
     );
 
   // Reset signal
@@ -77,6 +78,7 @@ module ksa (
 	.start(finish_shuffle),
 	.q(q),
 	.q_rom(q_rom),
+	.q_ram(q_ram),
 	.address(address_decrypt),
 	.address_rom(address_rom),
 	.address_ram(address_ram),

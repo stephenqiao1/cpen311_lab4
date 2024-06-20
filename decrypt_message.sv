@@ -3,9 +3,10 @@ module Decrypt_Message(
     input logic start,
     input wire [7:0] q, // to read from s[i] or s[j]
 	 input wire [7:0] q_rom, // to read from encrypted_input[k]
+	 input wire [7:0] q_ram,
     output logic [7:0] address, // address for the sram
-	 output logic [7:0] address_rom, // address for the encrypted rom
-	 output logic [7:0] address_ram, // address for the decrypted ram
+	 output logic [4:0] address_rom, // address for the encrypted rom
+	 output logic [4:0] address_ram, // address for the decrypted ram
 	 output logic [7:0] data, // for the sram
     output logic [7:0] data_ram, // for the decrypted ram
     output logic wren, // to enable writing to the sram
@@ -39,8 +40,10 @@ module Decrypt_Message(
 		  PRE_GET_F,
 		  GET_F,
 		  SET_ROM_ADDRESS,
+		  SET_ROM_ADDRESS_WAIT,
 		  DECRYPT,
 		  DECRYPT_ADDRESS_WAIT,
+		  DECRYPT_WAIT_WAIT,
 		  DECRYPT_PRE_WAIT,
 		  DECRYPT_WAIT,
 		  DECRYPT_DONE
@@ -48,7 +51,8 @@ module Decrypt_Message(
 
     state_type state;
 	 
-	 reg [7:0] i, j, k, f, i_element, j_element;
+	 reg [7:0] i, j, f, i_element, j_element, decrypted;
+	 reg [4:0] k;
 	 reg [8:0] temp_address, j_f, i_f;
 
     always_ff @(posedge clk) begin
@@ -56,15 +60,15 @@ module Decrypt_Message(
 				state <= INIT;
 				i <= 8'b0;
 				j <= 8'b0;
-				k <= 8'b0;
+				k <= 5'b0;
 				f <= 8'b0;
 				i_element <= 8'b0;
 				j_element <= 8'b0;
 				temp_address <= 9'b0;
 				j_f <= 9'b0;
 				address <= 8'b0; // set the address of sram to 0
-				address_rom <= 8'b0; // set the address of the encrypted rom to 0
-				address_ram <= 8'b0; // set the address of the decrypted ram to 0
+				address_rom <= 5'b0; // set the address of the encrypted rom to 0
+				address_ram <= 5'b0; // set the address of the decrypted ram to 0
 				wren <= 1'b0; 
             wren_ram <= 1'b0;
 				finish <= 8'b0;
@@ -73,7 +77,7 @@ module Decrypt_Message(
 					INIT: begin
 						i <= 8'b0;
 						j <= 8'b0;
-						k <= 8'b0;
+						k <= 4'b0;
 						state <= ADD_I;
 					end
 					ADD_I: begin
@@ -103,6 +107,7 @@ module Decrypt_Message(
 						state <= GET_ADDRESS_J;
 					end
 					GET_ADDRESS_J: begin
+						
 						address <= j_f[7:0];	
 						state <= GET_ADDRESS_J_WAIT;
 					end
@@ -114,7 +119,6 @@ module Decrypt_Message(
 						state <= SWAP_J_TO_I;
 					end
 					SWAP_J_TO_I: begin
-						
 						data <= i_element; // s[j] = s[i]
 						state <= ENABLE_WRITE;
 					end
@@ -161,27 +165,45 @@ module Decrypt_Message(
 						state <= SET_ROM_ADDRESS;
 					end
 					SET_ROM_ADDRESS: begin
+						state <= SET_ROM_ADDRESS_WAIT;
+					end
+					SET_ROM_ADDRESS_WAIT: begin
 						state <= DECRYPT;
 					end
 					DECRYPT: begin
+//						LED[0] <= q_rom[0];
+//						LED[1] <= q_rom[1];
+//						LED[2] <= q_rom[2];
+//						LED[3] <= q_rom[3];
+//						LED[4] <= q_rom[4];
+//						LED[5] <= q_rom[5];
+//						LED[6] <= q_rom[6];
+//						LED[7] <= q_rom[7];
 						address_ram <= k;
-						data_ram <= (f ^ q_rom);
+						decrypted <= (f ^ q_rom);
 						state <= DECRYPT_ADDRESS_WAIT;
 					end
 					
 					DECRYPT_ADDRESS_WAIT: begin
+						state <= DECRYPT_WAIT_WAIT;
+						data_ram <= decrypted;
+					end
+					
+					DECRYPT_WAIT_WAIT: begin
 						state <= DECRYPT_PRE_WAIT;
+						wren_ram <= 1'b1;
 					end
 		
 					DECRYPT_PRE_WAIT: begin
 						i <= i_f[7:0];
-						wren_ram <= 1'b1;
+						wren_ram <= 1'b0;
+						
 						state <= DECRYPT_WAIT;
 					end
 					DECRYPT_WAIT: begin
 						j <= j_f[7:0]; // set j to the updated j
-						wren_ram <= 1'b0;
 						k <= k + 8'd1;
+						
 						if (k == 8'd31) begin
                         state <= DECRYPT_DONE;
                     end else begin
