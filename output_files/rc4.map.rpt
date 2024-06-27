@@ -1,5 +1,5 @@
 Analysis & Synthesis report for rc4
-Wed Jun 19 19:28:37 2024
+Sun Jun 23 15:34:38 2024
 Quartus Prime Version 16.1.2 Build 203 01/18/2017 SJ Lite Edition
 
 
@@ -17,23 +17,24 @@ Quartus Prime Version 16.1.2 Build 203 01/18/2017 SJ Lite Edition
   9. Analysis & Synthesis RAM Summary
  10. Analysis & Synthesis IP Cores Summary
  11. Registers Removed During Synthesis
- 12. General Register Statistics
- 13. Inverted Register Statistics
- 14. Multiplexer Restructuring Statistics (Restructuring Performed)
- 15. Source assignments for s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|altsyncram_kq83:altsyncram1
- 16. Source assignments for message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|altsyncram_jeg3:altsyncram1
- 17. Source assignments for decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|altsyncram_9083:altsyncram1
- 18. Parameter Settings for User Entity Instance: s_memory:s_mem_inst|altsyncram:altsyncram_component
- 19. Parameter Settings for User Entity Instance: message:u_message|altsyncram:altsyncram_component
- 20. Parameter Settings for User Entity Instance: decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component
- 21. Parameter Settings for Inferred Entity Instance: Shuffle_Array:shuffle_array|lpm_divide:Mod0
- 22. altsyncram Parameter Settings by Entity Instance
- 23. Port Connectivity Checks: "Decrypt_Message:decrypt"
- 24. Port Connectivity Checks: "Shuffle_Array:shuffle_array"
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Source assignments for s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|altsyncram_kq83:altsyncram1
+ 17. Source assignments for message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|altsyncram_jeg3:altsyncram1
+ 18. Source assignments for decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|altsyncram_9083:altsyncram1
+ 19. Parameter Settings for User Entity Instance: s_memory:s_mem_inst|altsyncram:altsyncram_component
+ 20. Parameter Settings for User Entity Instance: message:u_message|altsyncram:altsyncram_component
+ 21. Parameter Settings for User Entity Instance: decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component
+ 22. Parameter Settings for Inferred Entity Instance: Shuffle_Array:shuffle_array|lpm_divide:Mod0
+ 23. altsyncram Parameter Settings by Entity Instance
+ 24. Port Connectivity Checks: "search_message:SrchMsg"
  25. In-System Memory Content Editor Settings
  26. Post-Synthesis Netlist Statistics for Top Partition
  27. Elapsed Time Per Partition
  28. Analysis & Synthesis Messages
+ 29. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -60,13 +61,13 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Jun 19 19:28:37 2024       ;
+; Analysis & Synthesis Status     ; Successful - Sun Jun 23 15:34:38 2024       ;
 ; Quartus Prime Version           ; 16.1.2 Build 203 01/18/2017 SJ Lite Edition ;
 ; Revision Name                   ; rc4                                         ;
 ; Top-level Entity Name           ; ksa                                         ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 444                                         ;
+; Total registers                 ; 483                                         ;
 ; Total pins                      ; 67                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 2,560                                       ;
@@ -182,66 +183,68 @@ agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 20          ;
-; Maximum allowed            ; 14          ;
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 14          ;
+; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   0.0%      ;
-;     Processors 3-14        ;   0.0%      ;
+;     Processors 3-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                                   ;
-+--------------------------------------------------------------------+-----------------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+-------------+
-; File Name with User-Entered Path                                   ; Used in Netlist ; File Type                                    ; File Name with Absolute Path                                                                                                         ; Library     ;
-+--------------------------------------------------------------------+-----------------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+-------------+
-; s_memory.vhd                                                       ; yes             ; User Wizard-Generated File                   ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/s_memory.vhd                                                       ;             ;
-; initialize_array.sv                                                ; yes             ; User SystemVerilog HDL File                  ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/initialize_array.sv                                                ;             ;
-; shuffle_array.sv                                                   ; yes             ; User SystemVerilog HDL File                  ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/shuffle_array.sv                                                   ;             ;
-; secret_messages/msg_1_for_task2b/message.vhd                       ; yes             ; User Wizard-Generated File                   ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/secret_messages/msg_1_for_task2b/message.vhd                       ;             ;
-; decrypt_message.sv                                                 ; yes             ; User SystemVerilog HDL File                  ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/decrypt_message.sv                                                 ;             ;
-; decrypted_memory.vhd                                               ; yes             ; User Wizard-Generated File                   ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/decrypted_memory.vhd                                               ;             ;
-; ksa.sv                                                             ; yes             ; Auto-Found SystemVerilog HDL File            ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv                                                             ;             ;
-; altsyncram.tdf                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf                                                                ;             ;
-; stratix_ram_block.inc                                              ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/stratix_ram_block.inc                                                         ;             ;
-; lpm_mux.inc                                                        ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_mux.inc                                                                   ;             ;
-; lpm_decode.inc                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_decode.inc                                                                ;             ;
-; aglobal161.inc                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/aglobal161.inc                                                                ;             ;
-; a_rdenreg.inc                                                      ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/a_rdenreg.inc                                                                 ;             ;
-; altrom.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altrom.inc                                                                    ;             ;
-; altram.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altram.inc                                                                    ;             ;
-; altdpram.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altdpram.inc                                                                  ;             ;
-; db/altsyncram_m5b4.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_m5b4.tdf                                             ;             ;
-; db/altsyncram_kq83.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_kq83.tdf                                             ;             ;
-; sld_mod_ram_rom.vhd                                                ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_mod_ram_rom.vhd                                                           ;             ;
-; sld_jtag_endpoint_adapter.vhd                                      ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd                                                 ;             ;
-; sld_jtag_endpoint_adapter_impl.sv                                  ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter_impl.sv                                             ;             ;
-; sld_rom_sr.vhd                                                     ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_rom_sr.vhd                                                                ;             ;
-; db/altsyncram_h2g4.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_h2g4.tdf                                             ;             ;
-; db/altsyncram_jeg3.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_jeg3.tdf                                             ;             ;
-; ../secret_messages/msg_1_for_task2b/message.mif                    ; yes             ; Auto-Found Memory Initialization File        ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/secret_messages/msg_1_for_task2b/message.mif                       ;             ;
-; db/altsyncram_hma4.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_hma4.tdf                                             ;             ;
-; db/altsyncram_9083.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_9083.tdf                                             ;             ;
-; sld_hub.vhd                                                        ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_hub.vhd                                                                   ; altera_sld  ;
-; db/ip/sld73f98f60/alt_sld_fab.v                                    ; yes             ; Encrypted Auto-Found Verilog HDL File        ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/ip/sld73f98f60/alt_sld_fab.v                                    ; alt_sld_fab ;
-; db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab.v             ; yes             ; Encrypted Auto-Found Verilog HDL File        ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab.v             ; alt_sld_fab ;
-; db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_ident.sv      ; yes             ; Auto-Found SystemVerilog HDL File            ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_ident.sv      ; alt_sld_fab ;
-; db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_presplit.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_presplit.sv   ; alt_sld_fab ;
-; db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd ; yes             ; Encrypted Auto-Found VHDL File               ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd ; alt_sld_fab ;
-; db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_splitter.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_splitter.sv   ; alt_sld_fab ;
-; sld_jtag_hub.vhd                                                   ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_jtag_hub.vhd                                                              ;             ;
-; lpm_divide.tdf                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_divide.tdf                                                                ;             ;
-; abs_divider.inc                                                    ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/abs_divider.inc                                                               ;             ;
-; sign_div_unsign.inc                                                ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sign_div_unsign.inc                                                           ;             ;
-; db/lpm_divide_62m.tdf                                              ; yes             ; Auto-Generated Megafunction                  ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/lpm_divide_62m.tdf                                              ;             ;
-; db/sign_div_unsign_9kh.tdf                                         ; yes             ; Auto-Generated Megafunction                  ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/sign_div_unsign_9kh.tdf                                         ;             ;
-; db/alt_u_div_ose.tdf                                               ; yes             ; Auto-Generated Megafunction                  ; C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/alt_u_div_ose.tdf                                               ;             ;
-+--------------------------------------------------------------------+-----------------+----------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+-------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                                                    ;
++--------------------------------------------------------------------+-----------------+----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------+-------------+
+; File Name with User-Entered Path                                   ; Used in Netlist ; File Type                                    ; File Name with Absolute Path                                                                                                          ; Library     ;
++--------------------------------------------------------------------+-----------------+----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------+-------------+
+; s_memory.vhd                                                       ; yes             ; User Wizard-Generated File                   ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/s_memory.vhd                                                       ;             ;
+; initialize_array.sv                                                ; yes             ; User SystemVerilog HDL File                  ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/initialize_array.sv                                                ;             ;
+; shuffle_array.sv                                                   ; yes             ; User SystemVerilog HDL File                  ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/shuffle_array.sv                                                   ;             ;
+; secret_messages/msg_1_for_task2b/message.vhd                       ; yes             ; User Wizard-Generated File                   ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/secret_messages/msg_1_for_task2b/message.vhd                       ;             ;
+; decrypt_message.sv                                                 ; yes             ; User SystemVerilog HDL File                  ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/decrypt_message.sv                                                 ;             ;
+; decrypted_memory.vhd                                               ; yes             ; User Wizard-Generated File                   ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/decrypted_memory.vhd                                               ;             ;
+; ksa.sv                                                             ; yes             ; Auto-Found SystemVerilog HDL File            ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv                                                             ;             ;
+; altsyncram.tdf                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf                                                                 ;             ;
+; stratix_ram_block.inc                                              ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/stratix_ram_block.inc                                                          ;             ;
+; lpm_mux.inc                                                        ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_mux.inc                                                                    ;             ;
+; lpm_decode.inc                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_decode.inc                                                                 ;             ;
+; aglobal161.inc                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/aglobal161.inc                                                                 ;             ;
+; a_rdenreg.inc                                                      ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/a_rdenreg.inc                                                                  ;             ;
+; altrom.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altrom.inc                                                                     ;             ;
+; altram.inc                                                         ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altram.inc                                                                     ;             ;
+; altdpram.inc                                                       ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altdpram.inc                                                                   ;             ;
+; db/altsyncram_m5b4.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_m5b4.tdf                                             ;             ;
+; db/altsyncram_kq83.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_kq83.tdf                                             ;             ;
+; sld_mod_ram_rom.vhd                                                ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_mod_ram_rom.vhd                                                            ;             ;
+; sld_jtag_endpoint_adapter.vhd                                      ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd                                                  ;             ;
+; sld_jtag_endpoint_adapter_impl.sv                                  ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter_impl.sv                                              ;             ;
+; sld_rom_sr.vhd                                                     ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_rom_sr.vhd                                                                 ;             ;
+; db/altsyncram_h2g4.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_h2g4.tdf                                             ;             ;
+; db/altsyncram_jeg3.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_jeg3.tdf                                             ;             ;
+; ../secret_messages/msg_1_for_task2b/message.mif                    ; yes             ; Auto-Found Memory Initialization File        ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/secret_messages/msg_1_for_task2b/message.mif                       ;             ;
+; db/altsyncram_hma4.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_hma4.tdf                                             ;             ;
+; db/altsyncram_9083.tdf                                             ; yes             ; Auto-Generated Megafunction                  ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_9083.tdf                                             ;             ;
+; search_message.sv                                                  ; yes             ; Auto-Found SystemVerilog HDL File            ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/search_message.sv                                                  ;             ;
+; sevensegmentdisplaydecoder.v                                       ; yes             ; Auto-Found Verilog HDL File                  ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/sevensegmentdisplaydecoder.v                                       ;             ;
+; sld_hub.vhd                                                        ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_hub.vhd                                                                    ; altera_sld  ;
+; db/ip/sld73f98f60/alt_sld_fab.v                                    ; yes             ; Encrypted Auto-Found Verilog HDL File        ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/ip/sld73f98f60/alt_sld_fab.v                                    ; alt_sld_fab ;
+; db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab.v             ; yes             ; Encrypted Auto-Found Verilog HDL File        ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab.v             ; alt_sld_fab ;
+; db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_ident.sv      ; yes             ; Auto-Found SystemVerilog HDL File            ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_ident.sv      ; alt_sld_fab ;
+; db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_presplit.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_presplit.sv   ; alt_sld_fab ;
+; db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd ; yes             ; Encrypted Auto-Found VHDL File               ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd ; alt_sld_fab ;
+; db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_splitter.sv   ; yes             ; Encrypted Auto-Found SystemVerilog HDL File  ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_splitter.sv   ; alt_sld_fab ;
+; sld_jtag_hub.vhd                                                   ; yes             ; Encrypted Megafunction                       ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_jtag_hub.vhd                                                               ;             ;
+; lpm_divide.tdf                                                     ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_divide.tdf                                                                 ;             ;
+; abs_divider.inc                                                    ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/abs_divider.inc                                                                ;             ;
+; sign_div_unsign.inc                                                ; yes             ; Megafunction                                 ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sign_div_unsign.inc                                                            ;             ;
+; db/lpm_divide_62m.tdf                                              ; yes             ; Auto-Generated Megafunction                  ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/lpm_divide_62m.tdf                                              ;             ;
+; db/sign_div_unsign_9kh.tdf                                         ; yes             ; Auto-Generated Megafunction                  ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/sign_div_unsign_9kh.tdf                                         ;             ;
+; db/alt_u_div_ose.tdf                                               ; yes             ; Auto-Generated Megafunction                  ; C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/alt_u_div_ose.tdf                                               ;             ;
++--------------------------------------------------------------------+-----------------+----------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------+-------------+
 
 
 +------------------------------------------------------------------------+
@@ -249,16 +252,16 @@ agreement for further details.
 +---------------------------------------------+--------------------------+
 ; Resource                                    ; Usage                    ;
 +---------------------------------------------+--------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 339                      ;
+; Estimate of Logic utilization (ALMs needed) ; 392                      ;
 ;                                             ;                          ;
-; Combinational ALUT usage for logic          ; 476                      ;
+; Combinational ALUT usage for logic          ; 583                      ;
 ;     -- 7 input functions                    ; 6                        ;
-;     -- 6 input functions                    ; 88                       ;
-;     -- 5 input functions                    ; 124                      ;
-;     -- 4 input functions                    ; 95                       ;
-;     -- <=3 input functions                  ; 163                      ;
+;     -- 6 input functions                    ; 87                       ;
+;     -- 5 input functions                    ; 139                      ;
+;     -- 4 input functions                    ; 147                      ;
+;     -- <=3 input functions                  ; 204                      ;
 ;                                             ;                          ;
-; Dedicated logic registers                   ; 444                      ;
+; Dedicated logic registers                   ; 483                      ;
 ;                                             ;                          ;
 ; I/O pins                                    ; 67                       ;
 ; Total MLAB memory bits                      ; 0                        ;
@@ -268,8 +271,8 @@ agreement for further details.
 ;                                             ;                          ;
 ; Maximum fan-out node                        ; altera_internal_jtag~TDO ;
 ; Maximum fan-out                             ; 295                      ;
-; Total fan-out                               ; 4123                     ;
-; Average fan-out                             ; 3.79                     ;
+; Total fan-out                               ; 4638                     ;
+; Average fan-out                             ; 3.76                     ;
 +---------------------------------------------+--------------------------+
 
 
@@ -278,10 +281,10 @@ agreement for further details.
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                                                              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                             ; Entity Name                       ; Library Name ;
 +-----------------------------------------------------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
-; |ksa                                                                                                                                    ; 476 (19)            ; 444 (0)                   ; 2560              ; 0          ; 67   ; 0            ; |ksa                                                                                                                                                                                                                                                                                                                                            ; ksa                               ; work         ;
-;    |Decrypt_Message:decrypt|                                                                                                            ; 93 (93)             ; 118 (118)                 ; 0                 ; 0          ; 0    ; 0            ; |ksa|Decrypt_Message:decrypt                                                                                                                                                                                                                                                                                                                    ; Decrypt_Message                   ; work         ;
+; |ksa                                                                                                                                    ; 583 (24)            ; 483 (0)                   ; 2560              ; 0          ; 67   ; 0            ; |ksa                                                                                                                                                                                                                                                                                                                                            ; ksa                               ; work         ;
+;    |Decrypt_Message:decrypt|                                                                                                            ; 94 (94)             ; 119 (119)                 ; 0                 ; 0          ; 0    ; 0            ; |ksa|Decrypt_Message:decrypt                                                                                                                                                                                                                                                                                                                    ; Decrypt_Message                   ; work         ;
 ;    |Initialize_Array:initialize_s_array|                                                                                                ; 22 (22)             ; 20 (20)                   ; 0                 ; 0          ; 0    ; 0            ; |ksa|Initialize_Array:initialize_s_array                                                                                                                                                                                                                                                                                                        ; Initialize_Array                  ; work         ;
-;    |Shuffle_Array:shuffle_array|                                                                                                        ; 105 (67)            ; 73 (73)                   ; 0                 ; 0          ; 0    ; 0            ; |ksa|Shuffle_Array:shuffle_array                                                                                                                                                                                                                                                                                                                ; Shuffle_Array                     ; work         ;
+;    |Shuffle_Array:shuffle_array|                                                                                                        ; 106 (68)            ; 63 (63)                   ; 0                 ; 0          ; 0    ; 0            ; |ksa|Shuffle_Array:shuffle_array                                                                                                                                                                                                                                                                                                                ; Shuffle_Array                     ; work         ;
 ;       |lpm_divide:Mod0|                                                                                                                 ; 38 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ksa|Shuffle_Array:shuffle_array|lpm_divide:Mod0                                                                                                                                                                                                                                                                                                ; lpm_divide                        ; work         ;
 ;          |lpm_divide_62m:auto_generated|                                                                                                ; 38 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ksa|Shuffle_Array:shuffle_array|lpm_divide:Mod0|lpm_divide_62m:auto_generated                                                                                                                                                                                                                                                                  ; lpm_divide_62m                    ; work         ;
 ;             |sign_div_unsign_9kh:divider|                                                                                               ; 38 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ksa|Shuffle_Array:shuffle_array|lpm_divide:Mod0|lpm_divide_62m:auto_generated|sign_div_unsign_9kh:divider                                                                                                                                                                                                                                      ; sign_div_unsign_9kh               ; work         ;
@@ -304,6 +307,13 @@ agreement for further details.
 ;             |altsyncram_kq83:altsyncram1|                                                                                               ; 0 (0)               ; 0 (0)                     ; 2048              ; 0          ; 0    ; 0            ; |ksa|s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|altsyncram_kq83:altsyncram1                                                                                                                                                                                                                             ; altsyncram_kq83                   ; work         ;
 ;             |sld_mod_ram_rom:mgl_prim2|                                                                                                 ; 41 (23)             ; 37 (28)                   ; 0                 ; 0          ; 0    ; 0            ; |ksa|s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2                                                                                                                                                                                                                               ; sld_mod_ram_rom                   ; work         ;
 ;                |sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|                                                                     ; 18 (18)             ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |ksa|s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr                                                                                                                                                                            ; sld_rom_sr                        ; work         ;
+;    |search_message:SrchMsg|                                                                                                             ; 100 (58)            ; 48 (48)                   ; 0                 ; 0          ; 0    ; 0            ; |ksa|search_message:SrchMsg                                                                                                                                                                                                                                                                                                                     ; search_message                    ; work         ;
+;       |SevenSegmentDisplayDecoder:decoder0|                                                                                             ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ksa|search_message:SrchMsg|SevenSegmentDisplayDecoder:decoder0                                                                                                                                                                                                                                                                                 ; SevenSegmentDisplayDecoder        ; work         ;
+;       |SevenSegmentDisplayDecoder:decoder1|                                                                                             ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ksa|search_message:SrchMsg|SevenSegmentDisplayDecoder:decoder1                                                                                                                                                                                                                                                                                 ; SevenSegmentDisplayDecoder        ; work         ;
+;       |SevenSegmentDisplayDecoder:decoder2|                                                                                             ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ksa|search_message:SrchMsg|SevenSegmentDisplayDecoder:decoder2                                                                                                                                                                                                                                                                                 ; SevenSegmentDisplayDecoder        ; work         ;
+;       |SevenSegmentDisplayDecoder:decoder3|                                                                                             ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ksa|search_message:SrchMsg|SevenSegmentDisplayDecoder:decoder3                                                                                                                                                                                                                                                                                 ; SevenSegmentDisplayDecoder        ; work         ;
+;       |SevenSegmentDisplayDecoder:decoder4|                                                                                             ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ksa|search_message:SrchMsg|SevenSegmentDisplayDecoder:decoder4                                                                                                                                                                                                                                                                                 ; SevenSegmentDisplayDecoder        ; work         ;
+;       |SevenSegmentDisplayDecoder:decoder5|                                                                                             ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ksa|search_message:SrchMsg|SevenSegmentDisplayDecoder:decoder5                                                                                                                                                                                                                                                                                 ; SevenSegmentDisplayDecoder        ; work         ;
 ;    |sld_hub:auto_hub|                                                                                                                   ; 122 (1)             ; 132 (0)                   ; 0                 ; 0          ; 0    ; 0            ; |ksa|sld_hub:auto_hub                                                                                                                                                                                                                                                                                                                           ; sld_hub                           ; altera_sld   ;
 ;       |alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric| ; 121 (0)             ; 132 (0)                   ; 0                 ; 0          ; 0    ; 0            ; |ksa|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric                                                                                                                                                                                           ; alt_sld_fab_with_jtag_input       ; altera_sld   ;
 ;          |alt_sld_fab:instrumentation_fabric|                                                                                           ; 121 (0)             ; 132 (0)                   ; 0                 ; 0          ; 0    ; 0            ; |ksa|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric                                                                                                                                                        ; alt_sld_fab                       ; alt_sld_fab  ;
@@ -348,7 +358,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
 ; Register name                                                                                                                                               ; Reason for Removal                                         ;
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
-; Shuffle_Array:shuffle_array|secret_key[11..23]                                                                                                              ; Merged with Shuffle_Array:shuffle_array|secret_key[10]     ;
+; search_message:SrchMsg|key_DNE_flag                                                                                                                         ; Stuck at GND due to stuck port data_in                     ;
+; search_message:SrchMsg|LEDR[4..9]                                                                                                                           ; Stuck at GND due to stuck port data_in                     ;
 ; Initialize_Array:initialize_s_array|data[0]                                                                                                                 ; Merged with Initialize_Array:initialize_s_array|address[0] ;
 ; Initialize_Array:initialize_s_array|data[1]                                                                                                                 ; Merged with Initialize_Array:initialize_s_array|address[1] ;
 ; Initialize_Array:initialize_s_array|data[2]                                                                                                                 ; Merged with Initialize_Array:initialize_s_array|address[2] ;
@@ -357,12 +368,22 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Initialize_Array:initialize_s_array|data[5]                                                                                                                 ; Merged with Initialize_Array:initialize_s_array|address[5] ;
 ; Initialize_Array:initialize_s_array|data[6]                                                                                                                 ; Merged with Initialize_Array:initialize_s_array|address[6] ;
 ; Initialize_Array:initialize_s_array|data[7]                                                                                                                 ; Merged with Initialize_Array:initialize_s_array|address[7] ;
-; Shuffle_Array:shuffle_array|secret_key[10]                                                                                                                  ; Stuck at GND due to stuck port data_in                     ;
+; search_message:SrchMsg|LEDR[1]                                                                                                                              ; Stuck at GND due to stuck port data_in                     ;
 ; s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[3]                 ; Stuck at GND due to stuck port data_in                     ;
 ; message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[3]                   ; Stuck at GND due to stuck port data_in                     ;
 ; decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[3] ; Stuck at GND due to stuck port data_in                     ;
-; Total Number of Removed Registers = 25                                                                                                                      ;                                                            ;
+; Total Number of Removed Registers = 19                                                                                                                      ;                                                            ;
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                              ;
++-------------------------------------+---------------------------+----------------------------------------+
+; Register name                       ; Reason for Removal        ; Registers Removed due to This Register ;
++-------------------------------------+---------------------------+----------------------------------------+
+; search_message:SrchMsg|key_DNE_flag ; Stuck at GND              ; search_message:SrchMsg|LEDR[1]         ;
+;                                     ; due to stuck port data_in ;                                        ;
++-------------------------------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -370,12 +391,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 444   ;
-; Number of registers using Synchronous Clear  ; 137   ;
+; Total registers                              ; 483   ;
+; Number of registers using Synchronous Clear  ; 128   ;
 ; Number of registers using Synchronous Load   ; 104   ;
-; Number of registers using Asynchronous Clear ; 139   ;
+; Number of registers using Asynchronous Clear ; 144   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 339   ;
+; Number of registers using Clock Enable       ; 372   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -397,33 +418,32 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                                                                           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[0]                                                                ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ksa|s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[1]                                                     ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[0]                                                                  ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ksa|message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[1]                                                       ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[0]                                                ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ksa|decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[1]                                     ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[1]                                                                ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |ksa|message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[1]                                                                  ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |ksa|decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[1]                                                ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ksa|s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[3]                                                     ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[3]                                                                  ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ksa|message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[3]                                                       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[3]                                                ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |ksa|decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[3]                                     ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |ksa|Decrypt_Message:decrypt|address_ram[1]                                                                                                                                                          ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|Decrypt_Message:decrypt|temp_address[3]                                                                                                                                                         ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|Decrypt_Message:decrypt|j_element[6]                                                                                                                                                            ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|Decrypt_Message:decrypt|temp_address[6]                                                                                                                                                         ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|Decrypt_Message:decrypt|j_element[3]                                                                                                                                                            ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|Decrypt_Message:decrypt|j_f[5]                                                                                                                                                                  ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|Decrypt_Message:decrypt|i_element[0]                                                                                                                                                            ;
-; 3:1                ; 13 bits   ; 26 LEs        ; 0 LEs                ; 26 LEs                 ; Yes        ; |ksa|Decrypt_Message:decrypt|address_rom[4]                                                                                                                                                          ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |ksa|Shuffle_Array:shuffle_array|secret_key[8]                                                                                                                                                       ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |ksa|Shuffle_Array:shuffle_array|adjusted_key[1]                                                                                                                                                     ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |ksa|s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[3]                 ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |ksa|message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[4]                   ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |ksa|decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[3] ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|Shuffle_Array:shuffle_array|data[2]                                                                                                                                                             ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|Shuffle_Array:shuffle_array|address[2]                                                                                                                                                          ;
-; 26:1               ; 4 bits    ; 68 LEs        ; 40 LEs               ; 28 LEs                 ; Yes        ; |ksa|s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[3]                      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|Decrypt_Message:decrypt|i_element[4]                                                                                                                                                            ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 0 LEs                ; 26 LEs                 ; Yes        ; |ksa|Decrypt_Message:decrypt|f[1]                                                                                                                                                                    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[7]                                                                ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |ksa|message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[0]                                                                  ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |ksa|decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[3]                                                ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |ksa|Shuffle_Array:shuffle_array|adjusted_key[0]                                                                                                                                                     ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |ksa|s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[0]                 ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |ksa|message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[2]                   ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |ksa|decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[2] ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|Shuffle_Array:shuffle_array|data[7]                                                                                                                                                             ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |ksa|Shuffle_Array:shuffle_array|address[1]                                                                                                                                                          ;
+; 26:1               ; 4 bits    ; 68 LEs        ; 40 LEs               ; 28 LEs                 ; Yes        ; |ksa|s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[1]                      ;
 ; 26:1               ; 4 bits    ; 68 LEs        ; 56 LEs               ; 12 LEs                 ; Yes        ; |ksa|message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[3]                        ;
-; 26:1               ; 4 bits    ; 68 LEs        ; 56 LEs               ; 12 LEs                 ; Yes        ; |ksa|decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[3]      ;
-; 30:1               ; 8 bits    ; 160 LEs       ; 0 LEs                ; 160 LEs                ; Yes        ; |ksa|Decrypt_Message:decrypt|data[6]                                                                                                                                                                 ;
-; 31:1               ; 8 bits    ; 160 LEs       ; 16 LEs               ; 144 LEs                ; Yes        ; |ksa|Decrypt_Message:decrypt|address[1]                                                                                                                                                              ;
-; 3:1                ; 17 bits   ; 34 LEs        ; 34 LEs               ; 0 LEs                  ; No         ; |ksa|address[6]                                                                                                                                                                                      ;
+; 26:1               ; 4 bits    ; 68 LEs        ; 56 LEs               ; 12 LEs                 ; Yes        ; |ksa|decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[0]      ;
+; 30:1               ; 8 bits    ; 160 LEs       ; 0 LEs                ; 160 LEs                ; Yes        ; |ksa|Decrypt_Message:decrypt|data[2]                                                                                                                                                                 ;
+; 31:1               ; 8 bits    ; 160 LEs       ; 16 LEs               ; 144 LEs                ; Yes        ; |ksa|Decrypt_Message:decrypt|address[4]                                                                                                                                                              ;
+; 3:1                ; 17 bits   ; 34 LEs        ; 34 LEs               ; 0 LEs                  ; No         ; |ksa|address[0]                                                                                                                                                                                      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -702,23 +722,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+---------------------------------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Decrypt_Message:decrypt"                                                                                                                                                 ;
-+--------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port   ; Type   ; Severity ; Details                                                                                                                                                                ;
-+--------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; finish ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                    ;
-; LED    ; Output ; Warning  ; Output or bidir port (8 bits) is smaller than the port expression (10 bits) it drives.  The 2 most-significant bit(s) in the port expression will be connected to GND. ;
-+--------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Shuffle_Array:shuffle_array"                                                                             ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                  ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; LED  ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "search_message:SrchMsg"                                                                                                       ;
++---------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                                                                    ;
++---------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
+; address ; Output ; Warning  ; Output or bidir port (8 bits) is wider than the port expression (5 bits) it drives; bit(s) "address[7..5]" have no fanouts ;
++---------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -737,40 +747,40 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 312                         ;
-;     CLR               ; 26                          ;
-;     ENA               ; 88                          ;
+; arriav_ff             ; 351                         ;
+;     CLR               ; 31                          ;
+;     ENA               ; 131                         ;
 ;     ENA CLR           ; 27                          ;
 ;     ENA CLR SLD       ; 8                           ;
-;     ENA SCLR          ; 63                          ;
+;     ENA SCLR          ; 53                          ;
 ;     ENA SCLR SLD      ; 16                          ;
 ;     ENA SLD           ; 32                          ;
-;     SCLR              ; 51                          ;
+;     SCLR              ; 52                          ;
 ;     plain             ; 1                           ;
-; arriav_lcell_comb     ; 353                         ;
-;     arith             ; 74                          ;
+; arriav_lcell_comb     ; 466                         ;
+;     arith             ; 106                         ;
 ;         0 data inputs ; 7                           ;
-;         1 data inputs ; 38                          ;
+;         1 data inputs ; 70                          ;
 ;         2 data inputs ; 17                          ;
 ;         3 data inputs ; 7                           ;
 ;         4 data inputs ; 5                           ;
 ;     extend            ; 3                           ;
 ;         7 data inputs ; 3                           ;
-;     normal            ; 268                         ;
+;     normal            ; 349                         ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 1                           ;
-;         2 data inputs ; 30                          ;
-;         3 data inputs ; 10                          ;
-;         4 data inputs ; 71                          ;
-;         5 data inputs ; 96                          ;
-;         6 data inputs ; 59                          ;
+;         1 data inputs ; 7                           ;
+;         2 data inputs ; 33                          ;
+;         3 data inputs ; 16                          ;
+;         4 data inputs ; 123                         ;
+;         5 data inputs ; 111                         ;
+;         6 data inputs ; 58                          ;
 ;     shared            ; 8                           ;
 ;         3 data inputs ; 8                           ;
 ; boundary_port         ; 148                         ;
 ; stratixv_ram_block    ; 24                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 10.40                       ;
-; Average LUT depth     ; 1.99                        ;
+; Average LUT depth     ; 2.04                        ;
 +-----------------------+-----------------------------+
 
 
@@ -789,40 +799,36 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.2 Build 203 01/18/2017 SJ Lite Edition
-    Info: Processing started: Wed Jun 19 19:28:10 2024
+    Info: Processing started: Sun Jun 23 15:34:18 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off rc4 -c rc4
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 14 of the 14 processors detected
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file s_memory.vhd
-    Info (12022): Found design unit 1: s_memory-SYN File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/s_memory.vhd Line: 54
-    Info (12023): Found entity 1: s_memory File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/s_memory.vhd Line: 42
+    Info (12022): Found design unit 1: s_memory-SYN File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/s_memory.vhd Line: 54
+    Info (12023): Found entity 1: s_memory File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/s_memory.vhd Line: 42
 Info (12021): Found 1 design units, including 1 entities, in source file initialize_array.sv
-    Info (12023): Found entity 1: Initialize_Array File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/initialize_array.sv Line: 1
+    Info (12023): Found entity 1: Initialize_Array File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/initialize_array.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file shuffle_array.sv
-    Info (12023): Found entity 1: Shuffle_Array File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/shuffle_array.sv Line: 1
+    Info (12023): Found entity 1: Shuffle_Array File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/shuffle_array.sv Line: 1
 Info (12021): Found 2 design units, including 1 entities, in source file secret_messages/msg_1_for_task2b/message.vhd
-    Info (12022): Found design unit 1: message-SYN File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/secret_messages/msg_1_for_task2b/message.vhd Line: 53
-    Info (12023): Found entity 1: message File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/secret_messages/msg_1_for_task2b/message.vhd Line: 43
+    Info (12022): Found design unit 1: message-SYN File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/secret_messages/msg_1_for_task2b/message.vhd Line: 53
+    Info (12023): Found entity 1: message File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/secret_messages/msg_1_for_task2b/message.vhd Line: 43
 Info (12021): Found 1 design units, including 1 entities, in source file decrypt_message.sv
-    Info (12023): Found entity 1: Decrypt_Message File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/decrypt_message.sv Line: 1
+    Info (12023): Found entity 1: Decrypt_Message File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/decrypt_message.sv Line: 1
 Info (12021): Found 2 design units, including 1 entities, in source file decrypted_memory.vhd
-    Info (12022): Found design unit 1: decrypted_memory-SYN File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/decrypted_memory.vhd Line: 55
-    Info (12023): Found entity 1: decrypted_memory File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/decrypted_memory.vhd Line: 43
+    Info (12022): Found design unit 1: decrypted_memory-SYN File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/decrypted_memory.vhd Line: 55
+    Info (12023): Found entity 1: decrypted_memory File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/decrypted_memory.vhd Line: 43
 Warning (12125): Using design file ksa.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: ksa File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 1
+    Info (12023): Found entity 1: ksa File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 1
 Warning (12300): Found the following files while searching for definition of entity "ksa", but did not use these files because already using a different file containing the entity definition
     Warning (12126): File: ksa.vhd
 Info (12127): Elaborating entity "ksa" for the top level hierarchy
-Warning (10034): Output port "HEX5" at ksa.sv(6) has no driver File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-Warning (10034): Output port "HEX4" at ksa.sv(6) has no driver File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-Warning (10034): Output port "HEX3" at ksa.sv(6) has no driver File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-Warning (10034): Output port "HEX2" at ksa.sv(6) has no driver File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-Warning (10034): Output port "HEX1" at ksa.sv(6) has no driver File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-Warning (10034): Output port "HEX0" at ksa.sv(7) has no driver File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 7
-Info (12128): Elaborating entity "s_memory" for hierarchy "s_memory:s_mem_inst" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 24
-Info (12128): Elaborating entity "altsyncram" for hierarchy "s_memory:s_mem_inst|altsyncram:altsyncram_component" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/s_memory.vhd Line: 61
-Info (12130): Elaborated megafunction instantiation "s_memory:s_mem_inst|altsyncram:altsyncram_component" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/s_memory.vhd Line: 61
-Info (12133): Instantiated megafunction "s_memory:s_mem_inst|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/s_memory.vhd Line: 61
+Warning (10858): Verilog HDL warning at ksa.sv(14): object go_to_task2_flag used but never assigned File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 14
+Warning (10036): Verilog HDL or VHDL warning at ksa.sv(18): object "shuffle_array_start" assigned a value but never read File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 18
+Info (12128): Elaborating entity "s_memory" for hierarchy "s_memory:s_mem_inst" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 27
+Info (12128): Elaborating entity "altsyncram" for hierarchy "s_memory:s_mem_inst|altsyncram:altsyncram_component" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/s_memory.vhd Line: 61
+Info (12130): Elaborated megafunction instantiation "s_memory:s_mem_inst|altsyncram:altsyncram_component" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/s_memory.vhd Line: 61
+Info (12133): Instantiated megafunction "s_memory:s_mem_inst|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/s_memory.vhd Line: 61
     Info (12134): Parameter "address_aclr_a" = "UNUSED"
     Info (12134): Parameter "address_aclr_b" = "NONE"
     Info (12134): Parameter "address_reg_b" = "CLOCK1"
@@ -874,14 +880,14 @@ Info (12133): Instantiated megafunction "s_memory:s_mem_inst|altsyncram:altsyncr
     Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=YES,INSTANCE_NAME=S"
     Info (12134): Parameter "lpm_type" = "altsyncram"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_m5b4.tdf
-    Info (12023): Found entity 1: altsyncram_m5b4 File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_m5b4.tdf Line: 28
+    Info (12023): Found entity 1: altsyncram_m5b4 File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_m5b4.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_m5b4" for hierarchy "s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_kq83.tdf
-    Info (12023): Found entity 1: altsyncram_kq83 File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_kq83.tdf Line: 28
-Info (12128): Elaborating entity "altsyncram_kq83" for hierarchy "s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|altsyncram_kq83:altsyncram1" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_m5b4.tdf Line: 37
-Info (12128): Elaborating entity "sld_mod_ram_rom" for hierarchy "s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_m5b4.tdf Line: 38
-Info (12130): Elaborated megafunction instantiation "s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_m5b4.tdf Line: 38
-Info (12133): Instantiated megafunction "s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2" with the following parameter: File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_m5b4.tdf Line: 38
+    Info (12023): Found entity 1: altsyncram_kq83 File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_kq83.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_kq83" for hierarchy "s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|altsyncram_kq83:altsyncram1" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_m5b4.tdf Line: 37
+Info (12128): Elaborating entity "sld_mod_ram_rom" for hierarchy "s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_m5b4.tdf Line: 38
+Info (12130): Elaborated megafunction instantiation "s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_m5b4.tdf Line: 38
+Info (12133): Instantiated megafunction "s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2" with the following parameter: File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_m5b4.tdf Line: 38
     Info (12134): Parameter "CVALUE" = "00000000"
     Info (12134): Parameter "IS_DATA_IN_RAM" = "1"
     Info (12134): Parameter "IS_READABLE" = "1"
@@ -893,10 +899,10 @@ Info (12133): Instantiated megafunction "s_memory:s_mem_inst|altsyncram:altsyncr
 Info (12128): Elaborating entity "sld_jtag_endpoint_adapter" for hierarchy "s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_jtag_endpoint_adapter:jtag_signal_adapter" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_mod_ram_rom.vhd Line: 302
 Info (12128): Elaborating entity "sld_jtag_endpoint_adapter_impl" for hierarchy "s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_jtag_endpoint_adapter:jtag_signal_adapter|sld_jtag_endpoint_adapter_impl:sld_jtag_endpoint_adapter_impl_inst" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd Line: 232
 Info (12128): Elaborating entity "sld_rom_sr" for hierarchy "s_memory:s_mem_inst|altsyncram:altsyncram_component|altsyncram_m5b4:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sld_mod_ram_rom.vhd Line: 828
-Info (12128): Elaborating entity "message" for hierarchy "message:u_message" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 31
-Info (12128): Elaborating entity "altsyncram" for hierarchy "message:u_message|altsyncram:altsyncram_component" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/secret_messages/msg_1_for_task2b/message.vhd Line: 60
-Info (12130): Elaborated megafunction instantiation "message:u_message|altsyncram:altsyncram_component" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/secret_messages/msg_1_for_task2b/message.vhd Line: 60
-Info (12133): Instantiated megafunction "message:u_message|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/secret_messages/msg_1_for_task2b/message.vhd Line: 60
+Info (12128): Elaborating entity "message" for hierarchy "message:u_message" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 34
+Info (12128): Elaborating entity "altsyncram" for hierarchy "message:u_message|altsyncram:altsyncram_component" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/secret_messages/msg_1_for_task2b/message.vhd Line: 60
+Info (12130): Elaborated megafunction instantiation "message:u_message|altsyncram:altsyncram_component" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/secret_messages/msg_1_for_task2b/message.vhd Line: 60
+Info (12133): Instantiated megafunction "message:u_message|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/secret_messages/msg_1_for_task2b/message.vhd Line: 60
     Info (12134): Parameter "address_aclr_a" = "NONE"
     Info (12134): Parameter "address_aclr_b" = "NONE"
     Info (12134): Parameter "address_reg_b" = "CLOCK1"
@@ -948,14 +954,14 @@ Info (12133): Instantiated megafunction "message:u_message|altsyncram:altsyncram
     Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=YES,INSTANCE_NAME=ENCR"
     Info (12134): Parameter "lpm_type" = "altsyncram"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_h2g4.tdf
-    Info (12023): Found entity 1: altsyncram_h2g4 File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_h2g4.tdf Line: 28
+    Info (12023): Found entity 1: altsyncram_h2g4 File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_h2g4.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_h2g4" for hierarchy "message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_jeg3.tdf
-    Info (12023): Found entity 1: altsyncram_jeg3 File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_jeg3.tdf Line: 28
-Info (12128): Elaborating entity "altsyncram_jeg3" for hierarchy "message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|altsyncram_jeg3:altsyncram1" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_h2g4.tdf Line: 35
-Info (12128): Elaborating entity "sld_mod_ram_rom" for hierarchy "message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_h2g4.tdf Line: 36
-Info (12130): Elaborated megafunction instantiation "message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_h2g4.tdf Line: 36
-Info (12133): Instantiated megafunction "message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2" with the following parameter: File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_h2g4.tdf Line: 36
+    Info (12023): Found entity 1: altsyncram_jeg3 File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_jeg3.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_jeg3" for hierarchy "message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|altsyncram_jeg3:altsyncram1" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_h2g4.tdf Line: 35
+Info (12128): Elaborating entity "sld_mod_ram_rom" for hierarchy "message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_h2g4.tdf Line: 36
+Info (12130): Elaborated megafunction instantiation "message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_h2g4.tdf Line: 36
+Info (12133): Instantiated megafunction "message:u_message|altsyncram:altsyncram_component|altsyncram_h2g4:auto_generated|sld_mod_ram_rom:mgl_prim2" with the following parameter: File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_h2g4.tdf Line: 36
     Info (12134): Parameter "CVALUE" = "00000000"
     Info (12134): Parameter "IS_DATA_IN_RAM" = "1"
     Info (12134): Parameter "IS_READABLE" = "1"
@@ -964,10 +970,10 @@ Info (12133): Instantiated megafunction "message:u_message|altsyncram:altsyncram
     Info (12134): Parameter "SHIFT_COUNT_BITS" = "4"
     Info (12134): Parameter "WIDTH_WORD" = "8"
     Info (12134): Parameter "WIDTHAD" = "5"
-Info (12128): Elaborating entity "decrypted_memory" for hierarchy "decrypted_memory:u_decrypted_memory" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 40
-Info (12128): Elaborating entity "altsyncram" for hierarchy "decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/decrypted_memory.vhd Line: 62
-Info (12130): Elaborated megafunction instantiation "decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/decrypted_memory.vhd Line: 62
-Info (12133): Instantiated megafunction "decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/decrypted_memory.vhd Line: 62
+Info (12128): Elaborating entity "decrypted_memory" for hierarchy "decrypted_memory:u_decrypted_memory" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 43
+Info (12128): Elaborating entity "altsyncram" for hierarchy "decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/decrypted_memory.vhd Line: 62
+Info (12130): Elaborated megafunction instantiation "decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/decrypted_memory.vhd Line: 62
+Info (12133): Instantiated megafunction "decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/decrypted_memory.vhd Line: 62
     Info (12134): Parameter "address_aclr_a" = "UNUSED"
     Info (12134): Parameter "address_aclr_b" = "NONE"
     Info (12134): Parameter "address_reg_b" = "CLOCK1"
@@ -1019,14 +1025,14 @@ Info (12133): Instantiated megafunction "decrypted_memory:u_decrypted_memory|alt
     Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=YES,INSTANCE_NAME=DECR"
     Info (12134): Parameter "lpm_type" = "altsyncram"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_hma4.tdf
-    Info (12023): Found entity 1: altsyncram_hma4 File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_hma4.tdf Line: 28
+    Info (12023): Found entity 1: altsyncram_hma4 File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_hma4.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_hma4" for hierarchy "decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_9083.tdf
-    Info (12023): Found entity 1: altsyncram_9083 File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_9083.tdf Line: 28
-Info (12128): Elaborating entity "altsyncram_9083" for hierarchy "decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|altsyncram_9083:altsyncram1" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_hma4.tdf Line: 37
-Info (12128): Elaborating entity "sld_mod_ram_rom" for hierarchy "decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_hma4.tdf Line: 38
-Info (12130): Elaborated megafunction instantiation "decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_hma4.tdf Line: 38
-Info (12133): Instantiated megafunction "decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2" with the following parameter: File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/altsyncram_hma4.tdf Line: 38
+    Info (12023): Found entity 1: altsyncram_9083 File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_9083.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_9083" for hierarchy "decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|altsyncram_9083:altsyncram1" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_hma4.tdf Line: 37
+Info (12128): Elaborating entity "sld_mod_ram_rom" for hierarchy "decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_hma4.tdf Line: 38
+Info (12130): Elaborated megafunction instantiation "decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_hma4.tdf Line: 38
+Info (12133): Instantiated megafunction "decrypted_memory:u_decrypted_memory|altsyncram:altsyncram_component|altsyncram_hma4:auto_generated|sld_mod_ram_rom:mgl_prim2" with the following parameter: File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/altsyncram_hma4.tdf Line: 38
     Info (12134): Parameter "CVALUE" = "00000000"
     Info (12134): Parameter "IS_DATA_IN_RAM" = "1"
     Info (12134): Parameter "IS_READABLE" = "1"
@@ -1035,17 +1041,21 @@ Info (12133): Instantiated megafunction "decrypted_memory:u_decrypted_memory|alt
     Info (12134): Parameter "SHIFT_COUNT_BITS" = "4"
     Info (12134): Parameter "WIDTH_WORD" = "8"
     Info (12134): Parameter "WIDTHAD" = "5"
-Info (12128): Elaborating entity "Initialize_Array" for hierarchy "Initialize_Array:initialize_s_array" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 61
-Info (12128): Elaborating entity "Shuffle_Array" for hierarchy "Shuffle_Array:shuffle_array" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 73
-Warning (10034): Output port "LED" at shuffle_array.sv(11) has no driver File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/shuffle_array.sv Line: 11
-Info (12128): Elaborating entity "Decrypt_Message" for hierarchy "Decrypt_Message:decrypt" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 91
-Warning (10230): Verilog HDL assignment warning at decrypt_message.sv(74): truncated value with size 8 to match size of target (1) File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/decrypt_message.sv Line: 74
-Warning (10230): Verilog HDL assignment warning at decrypt_message.sv(91): truncated value with size 9 to match size of target (8) File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/decrypt_message.sv Line: 91
-Warning (10230): Verilog HDL assignment warning at decrypt_message.sv(134): truncated value with size 9 to match size of target (8) File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/decrypt_message.sv Line: 134
-Warning (10230): Verilog HDL assignment warning at decrypt_message.sv(205): truncated value with size 8 to match size of target (5) File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/decrypt_message.sv Line: 205
-Warning (10034): Output port "LED" at decrypt_message.sv(16) has no driver File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/decrypt_message.sv Line: 16
+Info (12128): Elaborating entity "Initialize_Array" for hierarchy "Initialize_Array:initialize_s_array" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 64
+Info (12128): Elaborating entity "Shuffle_Array" for hierarchy "Shuffle_Array:shuffle_array" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 77
+Info (12128): Elaborating entity "Decrypt_Message" for hierarchy "Decrypt_Message:decrypt" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 94
+Warning (10230): Verilog HDL assignment warning at decrypt_message.sv(73): truncated value with size 8 to match size of target (1) File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/decrypt_message.sv Line: 73
+Warning (10230): Verilog HDL assignment warning at decrypt_message.sv(90): truncated value with size 9 to match size of target (8) File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/decrypt_message.sv Line: 90
+Warning (10230): Verilog HDL assignment warning at decrypt_message.sv(133): truncated value with size 9 to match size of target (8) File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/decrypt_message.sv Line: 133
+Warning (10230): Verilog HDL assignment warning at decrypt_message.sv(204): truncated value with size 8 to match size of target (5) File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/decrypt_message.sv Line: 204
+Warning (12125): Using design file search_message.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: search_message File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/search_message.sv Line: 1
+Info (12128): Elaborating entity "search_message" for hierarchy "search_message:SrchMsg" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 111
+Warning (12125): Using design file sevensegmentdisplaydecoder.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: SevenSegmentDisplayDecoder File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/sevensegmentdisplaydecoder.v Line: 1
+Info (12128): Elaborating entity "SevenSegmentDisplayDecoder" for hierarchy "search_message:SrchMsg|SevenSegmentDisplayDecoder:decoder5" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/search_message.sv Line: 34
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2024.06.19.19:28:25 Progress: Loading sld73f98f60/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2024.06.23.15:34:30 Progress: Loading sld73f98f60/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -1056,115 +1066,88 @@ Info (11172): Ident: "alt_sld_fab" instantiated altera_connection_identification
 Info (11172): Alt_sld_fab: Done "alt_sld_fab" with 6 modules, 6 files
 Info (11171): Finished IP generation for the debug fabric: alt_sld_fab.
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld73f98f60/alt_sld_fab.v
-    Info (12023): Found entity 1: alt_sld_fab File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/ip/sld73f98f60/alt_sld_fab.v Line: 9
+    Info (12023): Found entity 1: alt_sld_fab File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/ip/sld73f98f60/alt_sld_fab.v Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab.v
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab.v Line: 9
+    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab.v Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_ident.sv
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_ident File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_ident.sv Line: 33
+    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_ident File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_ident.sv Line: 33
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_presplit.sv
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_presplit File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_presplit.sv Line: 3
+    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_presplit File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_presplit.sv Line: 3
 Info (12021): Found 2 design units, including 1 entities, in source file db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd
-    Info (12022): Found design unit 1: alt_sld_fab_alt_sld_fab_sldfabric-rtl File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd Line: 182
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_sldfabric File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd Line: 11
+    Info (12022): Found design unit 1: alt_sld_fab_alt_sld_fab_sldfabric-rtl File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd Line: 182
+    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_sldfabric File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_sldfabric.vhd Line: 11
 Info (12021): Found 1 design units, including 1 entities, in source file db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_splitter.sv
-    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_splitter File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_splitter.sv Line: 3
+    Info (12023): Found entity 1: alt_sld_fab_alt_sld_fab_splitter File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/ip/sld73f98f60/submodules/alt_sld_fab_alt_sld_fab_splitter.sv Line: 3
 Info (278001): Inferred 1 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Shuffle_Array:shuffle_array|Mod0" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/shuffle_array.sv Line: 63
-Info (12130): Elaborated megafunction instantiation "Shuffle_Array:shuffle_array|lpm_divide:Mod0" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/shuffle_array.sv Line: 63
-Info (12133): Instantiated megafunction "Shuffle_Array:shuffle_array|lpm_divide:Mod0" with the following parameter: File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/shuffle_array.sv Line: 63
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Shuffle_Array:shuffle_array|Mod0" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/shuffle_array.sv Line: 64
+Info (12130): Elaborated megafunction instantiation "Shuffle_Array:shuffle_array|lpm_divide:Mod0" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/shuffle_array.sv Line: 64
+Info (12133): Instantiated megafunction "Shuffle_Array:shuffle_array|lpm_divide:Mod0" with the following parameter: File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/shuffle_array.sv Line: 64
     Info (12134): Parameter "LPM_WIDTHN" = "8"
     Info (12134): Parameter "LPM_WIDTHD" = "2"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_62m.tdf
-    Info (12023): Found entity 1: lpm_divide_62m File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/lpm_divide_62m.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_62m File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/lpm_divide_62m.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_9kh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_9kh File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/sign_div_unsign_9kh.tdf Line: 25
+    Info (12023): Found entity 1: sign_div_unsign_9kh File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/sign_div_unsign_9kh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_ose.tdf
-    Info (12023): Found entity 1: alt_u_div_ose File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/db/alt_u_div_ose.tdf Line: 23
-Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+    Info (12023): Found entity 1: alt_u_div_ose File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/db/alt_u_div_ose.tdf Line: 23
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDR[0]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 5
-    Warning (13410): Pin "LEDR[1]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 5
-    Warning (13410): Pin "LEDR[2]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 5
-    Warning (13410): Pin "LEDR[3]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 5
-    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 5
-    Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 5
-    Warning (13410): Pin "LEDR[6]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 5
-    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 5
-    Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 5
-    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 5
-    Warning (13410): Pin "HEX5[0]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX5[1]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX5[2]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX5[3]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX5[4]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX5[5]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX5[6]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX4[0]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX4[1]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX4[2]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX4[3]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX4[4]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX4[5]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX4[6]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX3[0]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX3[1]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX3[2]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX3[3]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX3[4]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX3[5]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX3[6]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX2[0]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX2[1]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX2[2]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX2[3]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX2[4]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX2[5]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX2[6]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX1[0]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX1[1]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX1[2]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX1[3]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX1[4]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX1[5]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX1[6]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 6
-    Warning (13410): Pin "HEX0[0]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 7
-    Warning (13410): Pin "HEX0[1]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 7
-    Warning (13410): Pin "HEX0[2]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 7
-    Warning (13410): Pin "HEX0[3]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 7
-    Warning (13410): Pin "HEX0[4]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 7
-    Warning (13410): Pin "HEX0[5]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 7
-    Warning (13410): Pin "HEX0[6]" is stuck at GND File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 7
+    Warning (13410): Pin "LEDR[1]" is stuck at GND File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 5
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 5
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 5
+    Warning (13410): Pin "LEDR[6]" is stuck at GND File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 5
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 5
+    Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 5
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 5
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
+Info (144001): Generated suppressed messages file C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/output_files/rc4.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 9 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (15752): Ignored 12 Virtual Pin logic option assignments
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_EN".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[2]".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[7]".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_RS".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[6]".
     Warning (15751): Ignored Virtual Pin assignment to "LCD_RW".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[6]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[1]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_ON".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_RS".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[5]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[2]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[4]".
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_EN".
     Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[3]".
     Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[0]".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[4]".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[5]".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_ON".
-    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[1]".
-Warning (21074): Design contains 3 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "KEY[0]" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 3
-    Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 3
-    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/steph/OneDrive/Desktop/UBC/4th Year/CPEN311/cpen311_lab4/ksa.sv Line: 3
-Info (21057): Implemented 776 device resources after synthesis - the final resource count might be different
+    Warning (15751): Ignored Virtual Pin assignment to "LCD_DATA[7]".
+Warning (21074): Design contains 14 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[0]" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 3
+    Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 3
+    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 3
+    Warning (15610): No output dependent on input pin "KEY[3]" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 3
+    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 4
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 4
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 4
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 4
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 4
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 4
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 4
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 4
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 4
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/ksa.sv Line: 4
+Info (21057): Implemented 881 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 18 input pins
     Info (21059): Implemented 53 output pins
-    Info (21061): Implemented 680 logic cells
+    Info (21061): Implemented 785 logic cells
     Info (21064): Implemented 24 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 87 warnings
-    Info: Peak virtual memory: 4976 megabytes
-    Info: Processing ended: Wed Jun 19 19:28:37 2024
-    Info: Elapsed time: 00:00:27
-    Info: Total CPU time (on all processors): 00:00:08
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 49 warnings
+    Info: Peak virtual memory: 4951 megabytes
+    Info: Processing ended: Sun Jun 23 15:34:38 2024
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:31
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/leest/OneDrive/Documents/School/CPEN311/Lab4/cpen311_lab4/output_files/rc4.map.smsg.
 
 

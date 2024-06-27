@@ -5,7 +5,8 @@ module search_message(
     output reg [7:0] address,
     output reg [23:0] key,
     output reg [6:0] HEX5, HEX4, HEX3, HEX2, HEX1, HEX0, 
-    output reg [9:0] LEDR
+    output reg [9:0] LEDR,
+    output reg go_to_task2_flag
 );
 
     typedef enum logic [3:0] {
@@ -16,7 +17,8 @@ module search_message(
         S_INC_ADDR,
         S_INC_KEY,
         S_GO_TO_ADDR,
-        S_ADDR_WAIT,
+        S_ADDR_WAIT1,
+        S_ADDR_WAIT2,
         S_GO_TO_TASK2,
         S_DONE
         
@@ -29,40 +31,47 @@ module search_message(
 
 
     wire [6:0] hex5, hex4, hex3, hex2, hex1, hex0;
-    SevenSegmentDisplayDecoder decoder5 (.ssOut(hex5), .nIn(key[23:20]));
-    SevenSegmentDisplayDecoder decoder4 (.ssOut(hex4), .nIn(key[19:16]));
-    SevenSegmentDisplayDecoder decoder3 (.ssOut(hex3), .nIn(key[15:12]));
-    SevenSegmentDisplayDecoder decoder2 (.ssOut(hex2), .nIn(key[11:8]));
-    SevenSegmentDisplayDecoder decoder1 (.ssOut(hex1), .nIn(key[7:4]));
-    SevenSegmentDisplayDecoder decoder0 (.ssOut(hex0), .nIn(key[3:0]));
+    SevenSegmentDisplayDecoder decoder5 (.ssOut(HEX5), .nIn(key[23:20]));
+    SevenSegmentDisplayDecoder decoder4 (.ssOut(HEX4), .nIn(key[19:16]));
+    SevenSegmentDisplayDecoder decoder3 (.ssOut(HEX3), .nIn(key[15:12]));
+    SevenSegmentDisplayDecoder decoder2 (.ssOut(HEX2), .nIn(key[11:8]));
+    SevenSegmentDisplayDecoder decoder1 (.ssOut(HEX1), .nIn(key[7:4]));
+    SevenSegmentDisplayDecoder decoder0 (.ssOut(HEX0), .nIn(key[3:0]));
 
     always_ff@(posedge clk or negedge start) begin
         if(!start) begin
             state <= S_INIT;
+            go_to_task2_flag <= 0;
         end else begin
             case(state)
                 S_INIT: begin
                     state <= S_GO_TO_ADDR;
                     address <= 8'd0;
-                    key <= 24'd0;
+                    //key <= 24'd0;
                     key_DNE_flag <= 1'b0;
                     LEDR <= 10'd0;
+                    // go_to_task2_flag <= 0;
 
-                    // Update HEX displays
-                    HEX5 <= hex5;
-                    HEX4 <= hex4;
-                    HEX3 <= hex3;
-                    HEX2 <= hex2;
-                    HEX1 <= hex1;
-                    HEX0 <= hex0;
+                    // // Update HEX displays
+                    // HEX5 <= hex5;
+                    // HEX4 <= hex4;
+                    // HEX3 <= hex3;
+                    // HEX2 <= hex2;
+                    // HEX1 <= hex1;
+                    // HEX0 <= hex0;
 
                 end
 
                 S_GO_TO_ADDR: begin
-                    state <= S_ADDR_WAIT;
+                    
+                    state <= S_ADDR_WAIT1;
                 end
 
-                S_ADDR_WAIT: begin
+                S_ADDR_WAIT1: begin
+                    state <= S_ADDR_WAIT2;
+                end
+
+                S_ADDR_WAIT2: begin
                     state <= S_READ_BYTE;
                 end
 
@@ -76,7 +85,7 @@ module search_message(
                 end
 
                 S_CHECK_IF_CHAR: begin
-                    if(read_data_temp >= 8'd97 && read_data_temp <= 8'd122 || read_data_temp == 8'd32) begin
+                    if((read_data_temp >= 8'd97 && read_data_temp <= 8'd122) || read_data_temp == 8'd32) begin
                         state <= S_INC_ADDR;
                     end else begin
                         state <= S_INC_KEY;
@@ -84,6 +93,7 @@ module search_message(
                 end
 
                 S_INC_KEY: begin
+                    LEDR[2] <= 1'b1;
                     key <= key + 24'd1;
 
                     if(key <= 24'h3FFFFF) begin
@@ -92,23 +102,25 @@ module search_message(
                         state <= S_DONE;
                     end
 
-                    // Update HEX displays
-                    HEX5 <= hex5;
-                    HEX4 <= hex4;
-                    HEX3 <= hex3;
-                    HEX2 <= hex2;
-                    HEX1 <= hex1;
-                    HEX0 <= hex0;
+                    // // Update HEX displays
+                    // HEX5 <= hex5;
+                    // HEX4 <= hex4;
+                    // HEX3 <= hex3;
+                    // HEX2 <= hex2;
+                    // HEX1 <= hex1;
+                    // HEX0 <= hex0;
                 end
 
                 S_GO_TO_TASK2: begin
+                    go_to_task2_flag <= 1;
                     state <= S_INIT;
                 end
 
                 S_INC_ADDR: begin
+                    LEDR[3] <= 1'b1;
                     address <= address + 8'd1;
 
-                    if(address == 8'd32) begin
+                    if(address == 8'd31) begin
                         state <= S_DONE;
                     end else begin
                         state <= S_GO_TO_ADDR;
@@ -116,6 +128,7 @@ module search_message(
                 end
 
                 S_DONE: begin
+                    LEDR[2] <= 1'b0;
                     if(!key_DNE_flag) begin
                         key <= key;
                         LEDR[0] <= 1'b1;

@@ -11,8 +11,7 @@ module Decrypt_Message(
     output logic [7:0] data_ram, // for the decrypted ram
     output logic wren, // to enable writing to the sram
 	 output logic wren_ram, // to enable writing to the decrypted ram
-    output logic finish,
-	 output logic [7:0] LED
+    output logic finish
 );
 
     // State machine states for Task 2

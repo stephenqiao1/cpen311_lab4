@@ -1,4 +1,5 @@
 module Shuffle_Array(
+    input wire [23:0] brute_force_key,
     input wire clk,
     input logic start,
     input logic [9:0] SW,
@@ -6,8 +7,7 @@ module Shuffle_Array(
     output logic [7:0] address,
     output logic [7:0] data,
     output logic wren,
-    output logic finish,
-    output logic [9:0] LED
+    output logic finish
 );
 
     // State machine states for Task 2
@@ -34,7 +34,7 @@ module Shuffle_Array(
     state_type state;
     
     reg [7:0] adjusted_key, i, j, i_element, j_element;
-    reg [23:0] secret_key;
+    //reg [23:0] secret_key;
 
     always_ff @(posedge clk) begin
         if (!start) begin
@@ -45,25 +45,28 @@ module Shuffle_Array(
             data <= 8'b0;
             i <= 8'b0;
             j <= 8'b0;
-            secret_key <= 24'b0;
+            //secret_key <= 24'b0;
         end else begin
             case (state)
                 S_INIT_TASK2A: begin
                     i <= 8'd0;
                     j <= 8'd0;
                     wren <= 1'b0;
-                    secret_key <= {14'd0, SW}; // Lower 10 bits are the switches state
+                    //secret_key <= {14'd0, SW}; // Lower 10 bits are the switches state
                     state <= S_PRE_SUM_J;
                 end
 
                 S_PRE_SUM_J: begin
                     address <= i;
                     if ((i % 3) == 8'd0) begin
-                        adjusted_key <= secret_key[23:16];
+                        //adjusted_key <= secret_key[23:16];
+                        adjusted_key <= brute_force_key[23:16];
                     end else if ((i % 3) == 8'd1) begin
-                        adjusted_key <= secret_key[15:8];
+                        //adjusted_key <= secret_key[15:8];
+                        adjusted_key <= brute_force_key[15:8];
                     end else begin
-                        adjusted_key <= secret_key[7:0];
+                        //adjusted_key <= secret_key[7:0];
+                        adjusted_key <= brute_force_key[7:0];
                     end
                     state <= S_SUM_J;
                 end

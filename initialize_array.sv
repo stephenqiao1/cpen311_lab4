@@ -23,7 +23,7 @@ module Initialize_Array(
     if (reset) begin
       state <= S_INIT_TASK1;
       i <= 8'b0;
-		finish <= 1'b0;
+		  finish <= 1'b0;
     end else begin
       case (state)
         S_INIT_TASK1: begin

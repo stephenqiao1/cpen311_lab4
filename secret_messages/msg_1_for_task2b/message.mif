@@ -1,16 +1,5 @@
--- Copyright (C) 1991-2013 Altera Corporation
--- Your use of Altera Corporation's design tools, logic functions 
--- and other software and tools, and its AMPP partner logic 
--- functions, and any output files from any of the foregoing 
--- (including device programming or simulation files), and any 
--- associated documentation or information are expressly subject 
--- to the terms and conditions of the Altera Program License 
--- Subscription Agreement, Altera MegaCore Function License 
--- Agreement, or other applicable license agreement, including, 
--- without limitation, that your use is for the sole purpose of 
--- programming logic devices manufactured by Altera and sold by 
--- Altera or its authorized distributors.  Please refer to the 
--- applicable agreement for further details.
+-- CPEN 311 2024S - Lab 4 - Task 3
+-- Encoded message
 
 -- Quartus II generated Memory Initialization File (.mif)
 
@@ -21,36 +10,36 @@ ADDRESS_RADIX=UNS;
 DATA_RADIX=UNS;
 
 CONTENT BEGIN
-	 0 : 45;
-	 1 : 143;
-	 2 : 122;
-	 3 : 169;
-	 4 : 56;
-	 5 : 115;
-	 6 : 95;
-	 7 : 135;
-	 8 : 69;
-	 9 : 27;
-	 10 : 130;
-	 11 : 134;
-	 12 : 75;
-	 13 : 155;
-	 14 : 127;
-	 15 : 157;
-	 16 : 239;
-	 17 : 13;
-	 18 : 196;
-	 19 : 187;
-	 20 : 249;
-	 21 : 119;
-	 22 : 153;
-	 23 : 117;
-	 24 : 255;
-	 25 : 213;
-	 26 : 96;
-	 27 : 115;
-	 28 : 1;
-	 29 : 248;
-	 30 : 22;
-	 31 : 37;
+	 0 : 118;
+	 1 : 108;
+	 2 : 248;
+	 3 : 226;
+	 4 : 116;
+	 5 : 136;
+	 6 : 219;
+	 7 : 2;
+	 8 : 103;
+	 9 : 225;
+	 10 : 231;
+	 11 : 131;
+	 12 : 73;
+	 13 : 217;
+	 14 : 21;
+	 15 : 220;
+	 16 : 222;
+	 17 : 86;
+	 18 : 65;
+	 19 : 167;
+	 20 : 46;
+	 21 : 229;
+	 22 : 226;
+	 23 : 60;
+	 24 : 53;
+	 25 : 142;
+	 26 : 142;
+	 27 : 18;
+	 28 : 101;
+	 29 : 157;
+	 30 : 45;
+	 31 : 150;
 END;
